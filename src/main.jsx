@@ -6,7 +6,7 @@ import { Global } from '@emotion/react'
 import Home from './pages/Home'
 import { SignIn } from './pages/SignIn'
 import Financial from './pages/Financial'
-import Profile from './pages/Profile'
+import Profile from './pages/Profile2'
 
 const router = createBrowserRouter([
   {

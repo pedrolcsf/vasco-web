@@ -56,7 +56,7 @@ export default function Financial() {
 
   return (
     <>
-      <Box>
+      <Box overflow={['', '', '', '', 'hidden']}>
         <Sidebar
           variant={variants?.navigation}
           isOpen={isSidebarOpen}
@@ -78,6 +78,7 @@ export default function Financial() {
             overflowX={'scroll'}
             flexDir="column"
             w="100%"
+            ml={['0', '0', '0', '0', '140']}
             bg="#303136"
             h="calc(100vh - 105px)"
           >

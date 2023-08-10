@@ -80,8 +80,10 @@ export default function Profile() {
                 templateAreas={[
                   `"profile"
                 "info"`,
-                  `"profile info"`,
-                  `"profile info"`,
+                  `"profile"
+                "info"`,
+                  `"profile"
+                "info"`,
                 ]}
                 templateColumns={[
                   'repeat(1, 1fr)',

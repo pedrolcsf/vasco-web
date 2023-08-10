@@ -169,6 +169,7 @@ const SidebarContent = ({ onClick }) => (
 const Sidebar = ({ isOpen, variant, onClose }) => {
   return variant === 'sidebar' ? (
     <Box
+      zIndex={1000}
       position="fixed"
       left={0}
       p={5}

@@ -70,7 +70,7 @@ export default function Home() {
   }
 
   return (
-    <Box>
+    <Box overflow={['', '', '', '', 'hidden']}>
       <Sidebar
         variant={variants?.navigation}
         isOpen={isSidebarOpen}
@@ -88,23 +88,27 @@ export default function Home() {
           }}
         />
 
-        <Flex flexDir="column" w="100%" bg="#303136" h="calc(100vh - 105px)">
+        <Flex
+          ml={['0', '0', '0', '0', '140']}
+          flexDir="column"
+          w="100%"
+          bg="#303136"
+          h="calc(100vh - 105px)"
+        >
           <Flex alignItems="center" justifyContent="center" mt="20px">
             <Grid
               templateAreas={[
-                `"wallet"
-                "other"
-                "nav"
+                `"nav"
                 "main"`,
-                `"wallet other"
-                "nav main"`,
-                `"wallet other"
-                "nav main"`,
+                `"nav"
+                "main"`,
+                `"nav"
+                "main"`,
               ]}
               templateColumns={[
                 'repeat(1, 1fr)',
-                'repeat(2, 1fr)',
-                'repeat(2, 1fr)',
+                'repeat(1, 1fr)',
+                'repeat(1, 1fr)',
               ]}
               gap={6}
             >
@@ -115,7 +119,7 @@ export default function Home() {
                 bg="#2A2B2F"
                 border="1px solid rgba(255,255,255, 0.1)"
               ></GridItem> */}
-              <GridItem
+              {/* <GridItem
                 as={Flex}
                 area={'wallet'}
                 w="100%"
@@ -270,69 +274,13 @@ export default function Home() {
                     </Flex>
                   </Flex>
                 </Flex>
-              </GridItem>
+              </GridItem> */}
 
-              <GridItem
-                area={'other'}
-                w="100%"
-                as={Flex}
-                flexDir={'column'}
-                p={['5', '5', '5']}
-                alignItems="center"
-                justifyContent="center"
-                bg="#2A2B2F"
-                border="1px solid rgba(255,255,255, 0.1)"
-              >
-                <Flex alignItems="center" justifyContent="center">
-                  <Text
-                    letterSpacing={1}
-                    fontFamily="Vasco Arquibancada"
-                    fontSize="4xl"
-                  >
-                    NOTIFICAÇÕES
-                  </Text>
-                </Flex>
-
-                <Flex
-                  mt="6"
-                  w="60%"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <Text
-                    textAlign="center"
-                    letterSpacing={1}
-                    color="#cccc"
-                    fontFamily="Vasco Arquibancada"
-                    fontSize="3xl"
-                  >
-                    VOCÊ POSSUI{' '}
-                    <span style={{ color: 'orange' }}>PENDENCIAS</span> NAS
-                    PARCELAS, ACESSE A ABA FINANCEIROS PARA REGULARIZAR
-                  </Text>
-                </Flex>
-                <Flex
-                  alignItems="center"
-                  justifyContent="center"
-                  w="100%"
-                  m="6"
-                >
-                  <Button
-                    as={Link}
-                    to="/financial"
-                    fontFamily="Barlow Bold"
-                    colorScheme="whiteAlpha"
-                    borderRadius={0}
-                    w="60%"
-                  >
-                    FINANCEIRO
-                  </Button>
-                </Flex>
-              </GridItem>
               <GridItem
                 area={'nav'}
                 w="100%"
                 p="5"
+                overflowX="scroll"
                 bg="#2A2B2F"
                 border="1px solid rgba(255,255,255, 0.1)"
               >
@@ -372,7 +320,15 @@ export default function Home() {
                               color="GrayText"
                               fontWeight="bold"
                             >
-                              Num. Contrato
+                              Data de Inicio
+                            </Th>
+                            <Th
+                              fontFamily="Barlow Bold"
+                              fontSize={17}
+                              color="GrayText"
+                              fontWeight="bold"
+                            >
+                              MATRICULA
                             </Th>
                             <Th
                               fontFamily="Barlow Bold"
@@ -381,6 +337,14 @@ export default function Home() {
                               fontWeight="bold"
                             >
                               Status
+                            </Th>
+                            <Th
+                              fontFamily="Barlow Bold"
+                              fontSize={17}
+                              color="GrayText"
+                              fontWeight="bold"
+                            >
+                              AÇÃO
                             </Th>
                           </Tr>
                         </Thead>
@@ -391,8 +355,10 @@ export default function Home() {
                         >
                           <Tr>
                             <Td>Sócio Diamante</Td>
+                            <Td>02/05/2002</Td>
                             <Td>00-000001</Td>
                             <Td>Ativo</Td>
+                            <Td>-</Td>
                           </Tr>
                         </Tbody>
                       </Table>
@@ -404,6 +370,7 @@ export default function Home() {
                 area={'main'}
                 w="100%"
                 p="5"
+                overflowX="scroll"
                 bg="#2A2B2F"
                 border="1px solid rgba(255,255,255, 0.1)"
               >
