@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Global } from '@emotion/react'
 import Home from './pages/Home'
 import { SignIn } from './pages/SignIn'
+import Financial from './pages/Financial'
+import Profile from './pages/Profile'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/financial',
+    element: <Financial />,
+  },
+  {
+    path: '/profile',
+    element: <Profile />,
   },
 ])
 

@@ -1,4 +1,9 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPDF,
+  exportComponentAsPNG,
+} from 'react-component-export-image'
 import {
   Box,
   Button,
@@ -17,16 +22,32 @@ import {
   Grid,
   GridItem,
   Container,
+  Avatar,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  FormControl,
+  Select,
 } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
 
 import { motion } from 'framer-motion'
+import { RiDownloadLine } from 'react-icons/ri'
 
 const smVariant = { navigation: 'drawer', navigationButton: true }
 const mdVariant = { navigation: 'sidebar', navigationButton: false }
 
 export default function Home() {
+  const [typeFile, setTypeFile] = useState('')
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const componentRef = useRef()
   const [isSidebarOpen, setSidebarOpen] = useState(false)
   const variants = useBreakpointValue({
     sm: smVariant,
@@ -36,6 +57,16 @@ export default function Home() {
   })
 
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen)
+
+  const downloadWallet = () => {
+    if (typeFile === 'jpg') {
+      exportComponentAsJPEG(componentRef)
+    } else if (typeFile === 'png') {
+      exportComponentAsPNG(componentRef)
+    } else if (typeFile === 'pdf') {
+      exportComponentAsPDF(componentRef)
+    }
+  }
 
   return (
     <Box>
@@ -60,12 +91,13 @@ export default function Home() {
           <Flex alignItems="center" justifyContent="center" mt="20px">
             <Grid
               templateAreas={[
-                `"header"
+                `"wallet"
+                "other"
                 "nav"
                 "main"`,
-                `"header header"
+                `"wallet other"
                 "nav main"`,
-                `"header header"
+                `"wallet other"
                 "nav main"`,
               ]}
               templateColumns={[
@@ -75,14 +107,196 @@ export default function Home() {
               ]}
               gap={6}
             >
-              <GridItem
+              {/* <GridItem
                 area={'header'}
                 w="100%"
                 p="5"
                 bg="#2A2B2F"
                 border="1px solid rgba(255,255,255, 0.1)"
+              ></GridItem> */}
+              <GridItem
+                as={Flex}
+                area={'wallet'}
+                w="100%"
+                flexDir={'column'}
+                p={['0', '5', '5']}
+                justifyContent="center"
+                alignItems="center"
+                bg="#222"
+                border="1px solid rgba(255,255,255, 0.1)"
               >
-                <motion.div style={{}}></motion.div>
+                <Flex w="100%" justifyContent="space-between">
+                  <div></div>
+                  <Button onClick={onOpen} colorScheme="whiteAlpha">
+                    <RiDownloadLine color="#fff" />
+                  </Button>
+
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent bg="#242529">
+                      <ModalHeader>Baixar carteirinha</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <FormControl>
+                          <Select
+                            bg="#18191b"
+                            borderRadius={0}
+                            placeholder="Selecione o tipo do arquivo:"
+                            fontSize="md"
+                            onChange={(e) => setTypeFile(e.target?.value)}
+                            id="email"
+                            type="email"
+                            textColor="#fff"
+                            borderColor="#2A2B2F"
+                            colorScheme="blackAlpha"
+                          >
+                            <option value="png">PNG</option>
+                            <option value="jpg">JPG</option>
+                            <option value="pdf">PDF</option>
+                          </Select>
+                        </FormControl>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        <Button
+                          colorScheme="whiteAlpha"
+                          mr={3}
+                          borderRadius={0}
+                          onClick={onClose}
+                        >
+                          Fechar
+                        </Button>
+                        <Button
+                          onClick={downloadWallet}
+                          borderRadius={0}
+                          colorScheme="linkedin"
+                        >
+                          Baixar
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </Flex>
+
+                <Flex
+                  ref={componentRef}
+                  flexDirection="column"
+                  w="100%"
+                  alignItems="center"
+                  mt="4"
+                  borderRadius={20}
+                >
+                  <Divider />
+                  <Flex
+                    bg="#222"
+                    p="4"
+                    w="100%"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Image mr="4" src="/vasco-cruz.svg" w="50px" />
+                    <Text
+                      fontWeight="bold"
+                      fontSize="xl"
+                      fontFamily="Barlow, sans-serif"
+                    >
+                      Club de Regatas Vasco da Gama
+                    </Text>
+                  </Flex>
+                  <Divider />
+
+                  <Flex
+                    bg="#222"
+                    justifyContent="space-between"
+                    pl="12"
+                    pt="6"
+                    alignItems="center"
+                    pb="6"
+                    pr="12"
+                  >
+                    <Flex mr={['10', '20', '20']} flexDir="column">
+                      <Text mb="4" fontFamily="Barlow Bold" fontSize="md">
+                        PEDRO LUCAS DOS SANTOS FERREIRA
+                      </Text>
+
+                      <Text fontFamily="Barlow Bold" fontSize="md">
+                        MATRICULA: 999999-99
+                      </Text>
+
+                      <Text fontFamily="Barlow Bold" fontSize="md" s>
+                        CPF: 999.999.999-99
+                      </Text>
+
+                      <Text mt="6" fontFamily="Barlow Bold" fontSize="md" s>
+                        DATA DE NASCIMENTO: 01/05/2002
+                      </Text>
+
+                      <Text fontFamily="Barlow Bold" fontSize="md" s>
+                        ADMISSÃO: 01/05/2002
+                      </Text>
+                    </Flex>
+
+                    <Flex>
+                      <Avatar borderRadius={1} size="2xl" />
+                    </Flex>
+                  </Flex>
+                </Flex>
+              </GridItem>
+
+              <GridItem
+                area={'other'}
+                w="100%"
+                as={Flex}
+                flexDir={'column'}
+                p={['0', '5', '5']}
+                alignItems="center"
+                justifyContent="center"
+                bg="#2A2B2F"
+                border="1px solid rgba(255,255,255, 0.1)"
+              >
+                <Flex alignItems="center" justifyContent="center">
+                  <Text
+                    letterSpacing={1}
+                    fontFamily="Vasco Arquibancada"
+                    fontSize="4xl"
+                  >
+                    NOTIFICAÇÕES
+                  </Text>
+                </Flex>
+
+                <Flex
+                  mt="6"
+                  w="60%"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Text
+                    textAlign="center"
+                    letterSpacing={1}
+                    color="#cccc"
+                    fontFamily="Vasco Arquibancada"
+                    fontSize="3xl"
+                  >
+                    VOCÊ POSSUI{' '}
+                    <span style={{ color: 'orange' }}>PENDENCIAS</span> NAS
+                    PARCELAS, ACESSE A ABA FINANCEIROS PARA REGULARIZAR
+                  </Text>
+                </Flex>
+                <Flex
+                  alignItems="center"
+                  justifyContent="center"
+                  w="100%"
+                  m="6"
+                >
+                  <Button
+                    fontFamily="Barlow Bold"
+                    colorScheme="whiteAlpha"
+                    borderRadius={0}
+                    w="60%"
+                  >
+                    FINANCEIRO
+                  </Button>
+                </Flex>
               </GridItem>
               <GridItem
                 area={'nav'}

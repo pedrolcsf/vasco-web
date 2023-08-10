@@ -25,6 +25,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { z } from 'zod'
 import { useRef } from 'react'
+import api from '../../services/api'
 // import api from '../../services/api'
 
 const createAuthFormSchema = z.object({

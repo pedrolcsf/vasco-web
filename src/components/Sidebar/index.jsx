@@ -43,7 +43,7 @@ const SidebarContent = ({ onClick }) => (
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={onClick}
+        onClick={() => (window.location.href = '/home')}
         w="100%"
       >
         <Box mr="4">
@@ -61,7 +61,7 @@ const SidebarContent = ({ onClick }) => (
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={onClick}
+        onClick={() => (window.location.href = '/financial')}
         w="100%"
       >
         <Box mr="4">
@@ -78,7 +78,7 @@ const SidebarContent = ({ onClick }) => (
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={onClick}
+        onClick={() => (window.location.href = '/profile')}
         w="100%"
       >
         <Box mr="4">
@@ -126,7 +126,7 @@ const SidebarContent = ({ onClick }) => (
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={onClick}
+        onClick={() => (window.location.href = '/notifications')}
         w="100%"
       >
         <Box mr="4">
@@ -145,7 +145,7 @@ const SidebarContent = ({ onClick }) => (
         fontFamily="Vasco"
         fontSize={26}
         color="#fff"
-        onClick={onClick}
+        onClick={() => (window.location.href = '/')}
         w="100%"
       >
         Sair
