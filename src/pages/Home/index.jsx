@@ -119,7 +119,7 @@ export default function Home() {
                 area={'wallet'}
                 w="100%"
                 flexDir={'column'}
-                p={['0', '5', '5']}
+                p={['5', '5', '5']}
                 justifyContent="center"
                 alignItems="center"
                 bg="#222"
@@ -208,11 +208,11 @@ export default function Home() {
                   <Flex
                     bg="#222"
                     justifyContent="space-between"
-                    pl="12"
+                    pl={['2', '12', '12']}
                     pt="6"
                     alignItems="center"
                     pb="6"
-                    pr="12"
+                    pr={['2', '12', '12']}
                   >
                     <Flex mr={['10', '20', '20']} flexDir="column">
                       <Text mb="4" fontFamily="Barlow Bold" fontSize="md">
@@ -220,19 +220,47 @@ export default function Home() {
                       </Text>
 
                       <Text fontFamily="Barlow Bold" fontSize="md">
-                        MATRICULA: 999999-99
+                        <span
+                          style={{
+                            color: '#ccc',
+                          }}
+                        >
+                          MATRICULA:{' '}
+                        </span>
+                        999999-99
                       </Text>
 
                       <Text fontFamily="Barlow Bold" fontSize="md" s>
-                        CPF: 999.999.999-99
+                        <span
+                          style={{
+                            color: '#ccc',
+                          }}
+                        >
+                          CPF:
+                        </span>{' '}
+                        999.999.999-99
                       </Text>
 
                       <Text mt="6" fontFamily="Barlow Bold" fontSize="md" s>
-                        DATA DE NASCIMENTO: 01/05/2002
+                        <span
+                          style={{
+                            color: '#ccc',
+                          }}
+                        >
+                          DATA DE NASCIMENTO:
+                        </span>{' '}
+                        01/05/2002
                       </Text>
 
                       <Text fontFamily="Barlow Bold" fontSize="md" s>
-                        ADMISSÃO: 01/05/2002
+                        <span
+                          style={{
+                            color: '#ccc',
+                          }}
+                        >
+                          ADMISSÃO:
+                        </span>{' '}
+                        01/05/2002
                       </Text>
                     </Flex>
 
@@ -248,7 +276,7 @@ export default function Home() {
                 w="100%"
                 as={Flex}
                 flexDir={'column'}
-                p={['0', '5', '5']}
+                p={['5', '5', '5']}
                 alignItems="center"
                 justifyContent="center"
                 bg="#2A2B2F"
