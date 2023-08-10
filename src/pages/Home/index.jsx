@@ -39,6 +39,7 @@ import Sidebar from '../../components/Sidebar'
 
 import { motion } from 'framer-motion'
 import { RiDownloadLine } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 const smVariant = { navigation: 'drawer', navigationButton: true }
 const mdVariant = { navigation: 'sidebar', navigationButton: false }
@@ -317,6 +318,8 @@ export default function Home() {
                   m="6"
                 >
                   <Button
+                    as={Link}
+                    to="/financial"
                     fontFamily="Barlow Bold"
                     colorScheme="whiteAlpha"
                     borderRadius={0}
