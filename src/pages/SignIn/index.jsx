@@ -16,8 +16,8 @@ import {
   InputRightElement,
   IconButton,
   useDisclosure,
-  Image,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { Logo } from './Logo'
 import { useForm } from 'react-hook-form'
@@ -177,7 +177,8 @@ export const SignIn = () => {
             <Stack spacing="6">
               <Button
                 // type="submit"
-                onClick={() => (window.location.href = '/home')}
+                as={Link}
+                to="/home"
                 fontFamily="Vasco, sans-serif"
                 letterSpacing={2}
                 fontSize={26}

@@ -15,6 +15,8 @@ import {
   Image,
 } from '@chakra-ui/react'
 
+import { Link } from 'react-router-dom'
+
 import {
   RiCheckboxLine,
   RiExchangeDollarLine,
@@ -37,13 +39,14 @@ const SidebarContent = ({ onClick }) => (
         CRVG
       </Text>
       <Button
+        as={Link}
         letterSpacing={1}
         colorScheme="blackAlpha"
         fontFamily="Vasco"
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={() => (window.location.href = '/home')}
+        to="/home"
         w="100%"
       >
         <Box mr="4">
@@ -55,13 +58,14 @@ const SidebarContent = ({ onClick }) => (
       <Divider />
 
       <Button
+        as={Link}
         letterSpacing={1}
         colorScheme="blackAlpha"
         fontFamily="Vasco"
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={() => (window.location.href = '/financial')}
+        to={'/financial'}
         w="100%"
       >
         <Box mr="4">
@@ -72,13 +76,14 @@ const SidebarContent = ({ onClick }) => (
       <Divider />
 
       <Button
+        as={Link}
         letterSpacing={1}
         colorScheme="blackAlpha"
         fontFamily="Vasco"
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={() => (window.location.href = '/profile')}
+        to="/profile"
         w="100%"
       >
         <Box mr="4">
@@ -88,13 +93,14 @@ const SidebarContent = ({ onClick }) => (
       </Button>
       <Divider />
       <Button
+        as={Link}
         letterSpacing={1}
         colorScheme="blackAlpha"
         fontFamily="Vasco"
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={onClick}
+        to=""
         w="100%"
       >
         <Box mr="4">
@@ -104,13 +110,14 @@ const SidebarContent = ({ onClick }) => (
       </Button>
       <Divider />
       <Button
+        as={Link}
         letterSpacing={1}
         colorScheme="blackAlpha"
         fontFamily="Vasco"
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={onClick}
+        to=""
         w="100%"
       >
         <Box mr="4">
@@ -120,13 +127,14 @@ const SidebarContent = ({ onClick }) => (
       </Button>
       <Divider />
       <Button
+        as={Link}
         letterSpacing={1}
         colorScheme="blackAlpha"
         fontFamily="Vasco"
         fontSize={26}
         bg="#2A2B2F"
         color="#fff"
-        onClick={() => (window.location.href = '/notifications')}
+        to=""
         w="100%"
       >
         <Box mr="4">
@@ -139,13 +147,14 @@ const SidebarContent = ({ onClick }) => (
       </Button>
       <Divider />
       <Button
+        as={Link}
         mt="8"
         letterSpacing={1}
         colorScheme="whiteAlpha"
         fontFamily="Vasco"
         fontSize={26}
         color="#fff"
-        onClick={() => (window.location.href = '/')}
+        to="/"
         w="100%"
       >
         Sair
